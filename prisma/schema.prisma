@@ -11,17 +11,39 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  posts Post[]
+  id       Int    @id @default(autoincrement())
+  username String
+  Feed     Feed[]
 }
 
-model Post {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  author    User    @relation(fields: [authorId], references: [id])
-  authorId  Int
+// TODO: auth tables
+
+// Y - Channel
+// Inst - Profile/Page
+// Tiktok - Profile
+// Twitter - User
+// Reddit - Subreddit
+// Reddit User - Reddit User
+
+// feed example: my favourite cooking channels, feed item would any  youtube channel related to my feed (babish culinary universe)
+// item type - youtube
+model Feed {
+  id          Int        @id @default(autoincrement())
+  name        String
+  description String?
+  creator     User       @relation(fields: [userId], references: [id])
+  items       FeedItem[]
+  userId      Int
+}
+
+model FeedItem {
+  id          Int     @id @default(autoincrement())
+  name        String?
+  description String?
+  Feed        Feed?   @relation(fields: [feedId], references: [id])
+  feedId      Int?
+}
+
+enum FeedItemType {
+  YoutubeChannel
 }
