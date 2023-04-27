@@ -7,9 +7,10 @@ services:
     restart: always
     environment:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRESS_USER: ${DB_USER}
-      POSTGRESS_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_DB: ${DB_NAME}
+      DATABASE_URL: ${DATABASE_URL}
     ports:
-      -{DB_PORT}:5432
+      - ${DB_PORT}:5432
     volumes:    
       - ./docker-data/db:/var/lib/postgresql/data
