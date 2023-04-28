@@ -19,8 +19,6 @@ model User {
 
   updatedAt DateTime @updatedAt()
 
-  deletedAt DateTime @default(now())
-
   Feed Feed[]
 }
 
