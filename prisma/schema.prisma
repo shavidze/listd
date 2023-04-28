@@ -37,13 +37,24 @@ model Feed {
 }
 
 model FeedItem {
-  id          Int     @id @default(autoincrement())
-  name        String?
-  description String?
-  Feed        Feed?   @relation(fields: [feedId], references: [id])
-  feedId      Int?
+  id             Int          @id @default(autoincrement())
+  name           String?
+  description    String?
+  meta           FeedItemMeta @relation(fields: [feedItemMetaId], references: [id])
+  Feed           Feed         @relation(fields: [feedId], references: [id])
+  feedId         Int
+  feedItemMetaId Int
 }
 
 enum FeedItemType {
   YoutubeChannel
+}
+
+model FeedItemMeta {
+  id       Int          @id @default(autoincrement())
+  name     String
+  //@Munchies - ერთერთი იუთუბერის სახელი-id/channel id
+  originId String
+  type     FeedItemType
+  FeedItem FeedItem[]
 }
