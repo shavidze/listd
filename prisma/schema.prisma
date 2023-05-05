@@ -22,6 +22,12 @@ model User {
   Feed Feed[]
 }
 
+enum Visibility {
+  Public
+  Unlisted
+  Private
+}
+
 // TODO: auth tables
 
 // Y - Channel
@@ -40,6 +46,8 @@ model Feed {
   creator     User       @relation(fields: [userId], references: [id])
   items       FeedItem[]
   userId      Int
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt()
 }
 
 model FeedItem {
@@ -50,6 +58,8 @@ model FeedItem {
   Feed           Feed         @relation(fields: [feedId], references: [id])
   feedId         Int
   feedItemMetaId Int
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt()
 }
 
 enum FeedItemType {
@@ -57,10 +67,12 @@ enum FeedItemType {
 }
 
 model FeedItemMeta {
-  id       Int          @id @default(autoincrement())
-  name     String
+  id        Int          @id @default(autoincrement())
+  name      String
   //@Munchies - ერთერთი იუთუბერის სახელი-id/channel id
-  originId String
-  type     FeedItemType
-  FeedItem FeedItem[]
+  originId  String
+  type      FeedItemType
+  FeedItem  FeedItem[]
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt()
 }
