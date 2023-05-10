@@ -3,7 +3,7 @@
 	import { IconBrandYoutube } from '@tabler/icons-svelte';
 </script>
 
-<div class="pt-2">
+<div class="p-4 hero-container flex flex-col justify-center items-center">
 	<p class="my-4">
 		Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
 		the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
@@ -13,7 +13,7 @@
 		and more recently with desktop publishing software like Aldus PageMaker including versions of
 		Lorem Ipsum.
 	</p>
-	<button type="button" class="btn variant-filled-warning cursor-pointer flex">
+	<a href="/onboarding" type="button" class="btn variant-filled-warning cursor-pointer flex">
 		Sign up with youtube <IconBrandYoutube class="ml-2" size={36} stroke={2} />
-	</button>
+	</a>
 </div>
