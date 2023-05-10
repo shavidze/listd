@@ -12,9 +12,8 @@
 <AppShell>
 	<svelte:fragment slot="header">
 		<AppBar>
-			<svelte:fragment slot="lead">(icon)</svelte:fragment>
+			<svelte:fragment slot="lead">listd.tv</svelte:fragment>
 			<svelte:fragment slot="trail"><LightSwitch /></svelte:fragment>
-			<svelte:fragment slot="headline">(headline)</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
 	<!-- <svelte:fragment slot="sidebarLeft">Sidebar Left</svelte:fragment> -->
@@ -22,9 +21,9 @@
 	<!-- (sidebarRight) -->
 	<!-- (pageHeader) -->
 	<!-- Router Slot -->
-	<main class="w-full h-full page-content flex-auto">
+	<div class="card p-4 mt-2 max-w-sm w-80 mx-auto">
 		<slot />
-	</main>
+	</div>
 	<!-- ---- / ---- -->
 	<!-- <svelte:fragment slot="pageFooter">Page Footer</svelte:fragment> -->
 	<!-- (footer) -->
